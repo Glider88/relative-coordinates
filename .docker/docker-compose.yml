@@ -1,0 +1,8 @@
+services:
+  php-cli:
+    build: ./php-cli
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - ./php-cli/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./..:/usr/src/relative

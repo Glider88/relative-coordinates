@@ -1,0 +1,33 @@
+{
+  "name": "glider88/relative-coordinates",
+  "version": "0.0.1",
+  "description": "Plugin for PhpSpreadsheet, add relative coordinates transformer",
+  "keywords": ["PHP", "Excel", "xls", "phpspreadsheet", "relative"],
+  "homepage": "https://github.com/Glider88/relative-coordinates",
+  "type": "library",
+  "minimum-stability": "dev",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sakharov Pavel",
+      "email": "s.p.alekseevich@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0",
+    "phpoffice/phpspreadsheet": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Glider88\\RelativeCoordinates\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Glider88\\RelativeCoordinates\\": "test/"
+    }
+  }
+}
