@@ -14,7 +14,7 @@ class RelativeCoordinates
     /** @var string[] */
     private array $absoluteColumns;
 
-    public static function generate(
+    public static function new(
         string $absTopLeftCoordinate,
         array $columnNames = [],
     ): self {
@@ -31,6 +31,7 @@ class RelativeCoordinates
             $absCell = $absCell->nextColumn();
         }
 
+        // fix when column is subset of other columns
         uksort($relToAbs, static fn(string $a, $b) => strcmp($a, $b) * -1);
 
         $relatives = array_keys($relToAbs);
