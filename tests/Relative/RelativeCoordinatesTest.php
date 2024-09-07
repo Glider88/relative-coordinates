@@ -21,7 +21,7 @@ class RelativeCoordinatesTest extends TestCase
             'range'           => ['A1', $titles, 'one1:five4', 'A1:E4'],
             'default columns' => ['D5',      [],         'C2', 'F6'],
             'subset columns'  =>
-                ['B1', ['a', 'aa', 'aaa'], 'aa2', 'C2'],
+                ['B1', ['bb', 'abb' ], 'abb', 'C'],
         ];
     }
 

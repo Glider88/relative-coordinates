@@ -31,8 +31,18 @@ class RelativeCoordinates
             $absCell = $absCell->nextColumn();
         }
 
+        $cmpFn = static function (string $a, string $b): int {
+            [$l1, $l2] = [strlen($a), strlen($b)];
+            if ($l1 === $l2) {
+                return strcmp($a, $b) * -1;
+            }
+
+            return $l1 > $l2 ? -1 : 1;
+        };
+
         // fix when column is subset of other columns
-        uksort($relToAbs, static fn(string $a, $b) => strcmp($a, $b) * -1);
+        uksort($relToAbs, $cmpFn);
+
 
         $relatives = array_keys($relToAbs);
         $absolutes = array_values($relToAbs);
