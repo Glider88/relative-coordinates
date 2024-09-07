@@ -5,6 +5,7 @@ namespace Tests\Glider88\RelativeCoordinates\Relative;
 use Glider88\RelativeCoordinates\Relative\RelativeCoordinates;
 use Glider88\RelativeCoordinates\Relative\RelativeData;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
 class RelativeDataTest extends TestCase
@@ -51,5 +52,15 @@ class RelativeDataTest extends TestCase
         $actual = $dataT->absolute($relData);
 
         $this->assertSame($expected, $actual);
+    }
+
+    #[TestWith([['{{', '}}', '|||']], 'too many escapes')]
+    #[TestWith([['|']], 'only one escape')]
+    #[TestWith([[]], 'empty escapes')]
+    public function testRelativeColumnFailed(array $escapes): void
+    {
+        $coordinateT = RelativeCoordinates::new('A1');
+        $this->expectException(\InvalidArgumentException::class);
+        new RelativeData($coordinateT, $escapes);
     }
 }

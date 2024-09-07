@@ -10,8 +10,12 @@ class RelativeData
 
     public function __construct(RelativeCoordinates $transformer, array $escapes = ['{{', '}}'])
     {
-        if (count($escapes) === 1) {
-            $escapes = [$escapes[0], $escapes[0]];
+        if (count($escapes) !== 2) {
+            throw new \InvalidArgumentException("Invalid escapes: " . implode(', ', $escapes));
+        }
+
+        if ($escapes[0] === $escapes[1]) {
+            throw new \InvalidArgumentException("Invalid escapes: " . implode(', ', $escapes));
         }
 
         [$start, $end] = $escapes;
