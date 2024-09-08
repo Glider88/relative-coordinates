@@ -1,6 +1,11 @@
 # Relative Coordinates
 Plugin for PhpSpreadsheet, add relative coordinate transformer.
 
+Installation:
+```shell
+composer require glider88/relative-coordinates
+```
+
 The core idea is to define area with relative sub coordinates.
 This allows you to define a table template and use it in many places in an Excel document. 
 Also, you can easily add, remove, swap columns without affecting the rest of the sheet.  
