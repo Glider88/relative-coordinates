@@ -72,3 +72,5 @@ $writer->save('table.xls');
 ```
 
 More complex example: `example/Table.php`
+
+Start docker container with: `bin/up`, test with: `bin/unit`, run command in container: `bin/sh`
