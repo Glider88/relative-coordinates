@@ -46,7 +46,7 @@ class RelativeData
      * @param string[]|string|mixed $cellData
      * @return string[]|string|mixed
      */
-    private function absoluteData($cellData)
+    private function absoluteData(mixed $cellData): mixed
     {
         if (!is_string($cellData)) {
             return $cellData;
@@ -70,7 +70,7 @@ class RelativeData
         return $prefix . implode('', $absParts);
     }
 
-    private function height(array $data): int
+    public function height(array $data): int
     {
         $firstRow = current($data);
         if (!is_array($firstRow)) {
