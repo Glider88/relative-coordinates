@@ -1,4 +1,4 @@
-FROM php:8.3-cli-alpine
+FROM php:8.1-cli-alpine
 
 WORKDIR /usr/src/relative
 
@@ -15,7 +15,7 @@ ENV UID=1000
 ENV GID=1000
 
 RUN addgroup --gid "$GID" "$GROUPNAME" \
- && adduser --disabled-password --gecos "" --home "$(pwd)" --no-create-home --ingroup "$GROUPNAME" --uid "$UID" $USER
+ && adduser --disabled-password --gecos "" --no-create-home --ingroup "$GROUPNAME" --uid "$UID" $USER
 
 # libpng-dev: need for gd
 # linux-headers: need for xdebug
