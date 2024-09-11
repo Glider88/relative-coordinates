@@ -1,5 +1,7 @@
 services:
   php-cli:
+    image: relative/php-fpm
+    container_name: relative-php-fpm
     build: ./php-cli
     extra_hosts:
       - host.docker.internal:host-gateway
