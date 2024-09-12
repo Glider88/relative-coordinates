@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 args="$@"
-docker compose --file .docker/docker-compose.yml exec --user relative php-cli sh -c "vendor/phpunit/phpunit/phpunit $args"
+bin/sh "vendor/phpunit/phpunit/phpunit $args"
