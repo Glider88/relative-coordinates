@@ -1,15 +1,13 @@
 FROM php:8.1-cli-alpine
 
-WORKDIR /usr/src/relative
+WORKDIR /usr/src/app
 
-RUN apk --no-cache --update add \
-    $PHPIZE_DEPS \
-    curl \
-    libpng-dev \
-    libzip-dev \
-    linux-headers
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
-ENV USER=relative
+RUN install-php-extensions xdebug gd zip
+
+ENV USER=docker
 ENV GROUPNAME=$USER
 ENV UID=1000
 ENV GID=1000
@@ -17,16 +15,6 @@ ENV GID=1000
 RUN addgroup --gid "$GID" "$GROUPNAME" \
  && adduser --disabled-password --gecos "" --no-create-home --ingroup "$GROUPNAME" --uid "$UID" $USER
 
-# libpng-dev: need for gd
-# linux-headers: need for xdebug
-# libzip-dev: need for zip
-
-RUN docker-php-ext-install gd zip \
- && pecl install xdebug \
- && docker-php-ext-enable xdebug
-
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
-
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 ENTRYPOINT ["./.docker/php-cli/entrypoint.sh"]

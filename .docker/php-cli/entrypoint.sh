@@ -1,5 +1,5 @@
 #!/bin/sh
 
-su - "$USER" -c "cd /usr/src/relative; composer install"
+su - "$USER" -c "cd /usr/src/app; composer install"
 
 tail -f /dev/null

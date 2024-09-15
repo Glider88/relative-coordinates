@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 args="$@"
-docker compose  exec --user relative php-cli sh -c "$args"
+docker compose  exec --user docker php-cli sh -c "$args"
