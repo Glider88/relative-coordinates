@@ -89,7 +89,7 @@ function table(string $start, array $columns, array $data, int $height, Workshee
         ->getStartColor()
         ->setARGB(BLUE);
 
-    $oddRows = range($firstTableRow + 1, $lastTableRow,2);
+    $oddRows = range($firstTableRow + 1, $lastTableRow, 2);
     foreach ($oddRows as $oddRow) {
         $worksheet
             ->getStyle($t->absolute("$firstColumn$oddRow:$lastColumn$oddRow"))
