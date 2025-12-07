@@ -1,9 +1,20 @@
 # Relative Coordinates
-Plugin for PhpSpreadsheet, add relative coordinate transformer.
+Abstraction for PhpSpreadsheet, add relative coordinate transformer.
 
 Installation:
 ```shell
 composer require glider88/relative-coordinates
+```
+
+Start:
+```shell
+bin/reup # first run
+```
+```shell
+bin/up   # start app
+```
+```shell
+bin/unit # run tests
 ```
 
 The core idea is to define area with relative sub coordinates.
@@ -77,5 +88,3 @@ $writer->save('table.xls');
 ```
 
 More complex example: `example/Table.php`
-
-Start docker container with: `bin/up`, test with: `bin/unit`, run command in container: `bin/sh`
